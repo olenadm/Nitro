@@ -1,0 +1,67 @@
+$light: #d7e3fc;
+$light-bg: #e1e6ee;
+
+$body-color: #222;
+
+$headings-color: #1d1c39;
+$headings-font-weight: 600;
+$h1-font-size: 40px;
+$h2-font-size: 21px;
+$primary : #b8e0d4;
+
+$accordion-bg: $light;
+$accordion-border-radius: 0;
+$accordion-border-color: $light;
+$accordion-button-bg: $light-bg;
+$accordion-body-padding-y: 18px;
+$accordion-body-padding-x: 18px;
+
+$accordion-button-padding-y: 18px;
+$accordion-button-padding-x: 18px;
+$accordion-button-active-bg: $light;
+$accordion-button-bg: #abc4ff;
+$accordion-button-color: #0b0e1f;
+$accordion-button-active-color: #4461d7;
+$accordion-button-focus-box-shadow: none;
+$btn-border-radius-lg:            2px;
+
+h3.title {
+  font-size: 15px;
+}
+.btn {text-transform: uppercase; }
+.accordion-header {
+  text-transform: uppercase;
+}
+
+.icon-sml {
+  height: 18px;
+}
+.meta-data {background-color: #edf2fa; padding:8px 10px 6px; border-radius:10px; margin-bottom:0;}
+.accordion-button {
+  font-weight: 600;
+}
+
+@media (min-width: 300px) {
+  .acc {
+    font-size: 15px;
+  }
+  h1.title {
+    font-size: 28px;
+    line-height: 41px;
+  }
+}
+
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+  h1.title {
+    font-size: 40px;
+    line-height: 41px;
+  }
+
+  .accordion-button {
+    font-weight: 500;
+  }
+}
+
+@import "/node_modules/bootstrap/scss/bootstrap.scss";

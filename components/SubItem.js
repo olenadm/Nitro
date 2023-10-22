@@ -61,10 +61,7 @@ export default function SubItem(props) {
         </div>
       </div>
 
-      <div
-        className="collapse ms-lg-3 editTemplate mt-2"
-        id={`editTemplate${item.id}`}
-      >
+      <div className="collapse editTemplate mt-2" id={`editTemplate${item.id}`}>
         <div className="card card-body">
           <form
             className="row gx-3 gy-2 align-items-center "

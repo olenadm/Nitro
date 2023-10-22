@@ -66,7 +66,7 @@ export default function Home(props) {
     </>
   );
 }
-
+//pre-render a page at build time
 export function getStaticProps() {
   const treeItems = getCategoryMap("time");
 

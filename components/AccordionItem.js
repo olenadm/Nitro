@@ -37,7 +37,7 @@ export default function AccordionItem(props) {
         <div className="accordion-body pb-4 pt-0 pe-lg-4 acc">
           <ul className="list-group">
             {items.map((item) => (
-              <SubItem item={item} onChangeValues={changeValuesHandler} />
+              <SubItem item={item} key={item.id} onChangeValues={changeValuesHandler} />
             ))}
           </ul>
         </div>

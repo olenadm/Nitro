@@ -7,7 +7,7 @@ $headings-color: #1d1c39;
 $headings-font-weight: 600;
 $h1-font-size: 40px;
 $h2-font-size: 21px;
-$primary : #b8e0d4;
+$primary: #b8e0d4;
 
 $accordion-bg: $light;
 $accordion-border-radius: 0;
@@ -23,12 +23,51 @@ $accordion-button-bg: #abc4ff;
 $accordion-button-color: #0b0e1f;
 $accordion-button-active-color: #4461d7;
 $accordion-button-focus-box-shadow: none;
-$btn-border-radius-lg:            2px;
+$btn-border-radius-lg: 2px;
+
 
 h3.title {
   font-size: 15px;
 }
-.btn {text-transform: uppercase; }
+.btn {
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  transition: all 0.3s linear;
+  overflow: hidden;
+  letter-spacing: 0.1em;
+  z-index: 1;
+
+}
+
+.btn:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: #8bd0c2;
+  transition-delay: .1s;
+  transition-timing-function: ease-in-out;
+  transition-duration: .5s;
+  transition-property: all;
+  opacity: 1;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  transform: scaleY(0);
+  z-index: -1;
+}
+
+
+.btn:hover:after {
+  opacity: 1;
+  transform: scaleY(1.0);
+}
+
+
 .accordion-header {
   text-transform: uppercase;
 }
@@ -36,7 +75,12 @@ h3.title {
 .icon-sml {
   height: 18px;
 }
-.meta-data {background-color: #edf2fa; padding:8px 10px 6px; border-radius:10px; margin-bottom:0;}
+.meta-data {
+  background-color: #edf2fa;
+  padding: 8px 10px 6px;
+  border-radius: 10px;
+  margin-bottom: 0;
+}
 .accordion-button {
   font-weight: 600;
 }

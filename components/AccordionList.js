@@ -3,9 +3,8 @@ import AccordionItem from "./AccordionItem";
 export default function AccordionList(props) {
   const { treeItems } = props;
 
-  function addCommentHandler(commentData) {
-    console.log(`AL ${commentData.author}`);
-    props.onAddComment(commentData);
+  function changeValuesHandler(formData) {
+    props.onChangeValues(formData);
   }
 
   return (
@@ -16,7 +15,7 @@ export default function AccordionList(props) {
           id={key}
           title={item[0]}
           items={item[1]}
-          onAddComment={addCommentHandler}
+          onChangeValues={changeValuesHandler}
           
         />
       ))}

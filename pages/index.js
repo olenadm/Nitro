@@ -1,57 +1,48 @@
-import { getAllData, getCategoryMap, getCategoryMapF } from "./api/hello";
+import { getCategoryMap, getCategoryMapF } from "./api/hello";
 import AccordionList from "@/components/AccordionList";
 import { useState, useEffect } from "react";
 import FilterButton from "@/components/ui/FilterButton";
 import "core-js/actual/";
 
-
 export default function Home(props) {
   const { treeItems } = props;
   const [filter, setFilter] = useState("author");
 
-  const [treeItemsP, setTreeItemsP] = useState([]);
+  const [treeItemsP, setTreeItemsP] = useState(treeItems);
 
   const FILTER_NAMES = ["author", "location", "time"];
 
-  function addCommentHandler(commentData) {
-    const allData = getAllData();
+  //if author and location values have been changed
+  function changeValuesHandler(formData) {
+    //need to ungroup posts forst
+    const flat = treeItemsP.flatMap(([x, a]) => a.map((o) => ({ ...o })));
 
+    //update values from form input
+    let new_array = flat.map((element) => {
+      if (element.id == formData.id) {
+        element.author = formData.author ? formData.author : element.author;
+        element.location = formData.location
+          ? formData.location
+          : element.location;
+      }
+      return element;
+    });
 
-    console.log("Id of element " + commentData.id);
-    console.log(treeItemsP);
-
-    const flat = treeItemsP.flatMap(([x, a])=> a.map(o=> ({ ...o})) )
-
-
-    let new_array = flat.map((element) =>
-      element.id == commentData.id
-        ? { ...element, author: `${commentData.author}` }
-        : element
-    );
-
- 
-   
-
-    const regroupedArray = getCategoryMapF(new_array, filter)
-    console.log("New array "+JSON.stringify(regroupedArray));
-
+    //group items
+    const regroupedArray = getCategoryMapF(new_array, filter);
     setTreeItemsP((old) => regroupedArray);
   }
 
-  // let treeItemsP;
-
   useEffect(() => {
-    console.log("UseEffect")
-    console.log(treeItemsP)
-    const flat = treeItemsP.flatMap(([x, a])=> a.map(o=> ({ ...o})) )
+    //ungroup tree items
+    const flat = treeItemsP.flatMap(([x, a]) => a.map((o) => ({ ...o })));
 
-    const filtered = treeItemsP.length ? getCategoryMapF(flat, filter) : getCategoryMap(filter);
-
-    console.log(getCategoryMapF(flat, filter))
+    //regroup again based on selected filter
+    const filtered = treeItemsP.length
+      ? getCategoryMapF(flat, filter)
+      : getCategoryMap(filter);
 
     setTreeItemsP((old) => filtered);
-    console.log("UseEffectAFTER")
-    console.log(treeItemsP)
   }, [filter]);
 
   const filterList = FILTER_NAMES.map((name) => (
@@ -68,8 +59,8 @@ export default function Home(props) {
       <div className="col-sm-12">
         <div>{filterList}</div>
         <AccordionList
-          treeItems={treeItemsP ? treeItemsP : treeItems}
-          onAddComment={addCommentHandler}
+          treeItems={treeItemsP}
+          onChangeValues={changeValuesHandler}
         />
       </div>
     </>
@@ -77,7 +68,7 @@ export default function Home(props) {
 }
 
 export function getStaticProps() {
-  const treeItems = getCategoryMap("author");
+  const treeItems = getCategoryMap("time");
 
   return {
     props: {

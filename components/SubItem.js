@@ -38,7 +38,7 @@ export default function SubItem(props) {
       </span>
 
       <div
-        className="meta-data ms-lg-3 text-muted small d-flex align-items-center justify-content-between
+        className="meta-data  text-muted small d-flex align-items-center justify-content-between
      border-rounded  mt-2"
       >
         <div className="w-50">

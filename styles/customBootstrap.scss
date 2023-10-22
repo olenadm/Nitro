@@ -25,7 +25,6 @@ $accordion-button-active-color: #4461d7;
 $accordion-button-focus-box-shadow: none;
 $btn-border-radius-lg: 2px;
 
-
 h3.title {
   font-size: 15px;
 }
@@ -39,7 +38,6 @@ h3.title {
   overflow: hidden;
   letter-spacing: 0.1em;
   z-index: 1;
-
 }
 
 .btn:after {
@@ -50,9 +48,9 @@ h3.title {
   right: 0;
   height: 100%;
   background-color: #8bd0c2;
-  transition-delay: .1s;
+  transition-delay: 0.1s;
   transition-timing-function: ease-in-out;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   transition-property: all;
   opacity: 1;
   transform-origin: bottom;
@@ -61,12 +59,10 @@ h3.title {
   z-index: -1;
 }
 
-
 .btn:hover:after {
   opacity: 1;
-  transform: scaleY(1.0);
+  transform: scaleY(1);
 }
-
 
 .accordion-header {
   text-transform: uppercase;
@@ -86,21 +82,26 @@ h3.title {
 }
 
 @media (min-width: 300px) {
+  .filterBtn.btn-lg {
+    font-size: 12px;
+  }
   .acc {
     font-size: 15px;
-  }
-  h1.title {
-    font-size: 28px;
-    line-height: 41px;
   }
 }
 
 @media (min-width: 768px) {
+  .filterBtn.btn-lg {
+    font-size: 15px;
+  }
 }
 @media (min-width: 992px) {
-  h1.title {
-    font-size: 40px;
-    line-height: 41px;
+  .meta-data,
+  .editTemplate {
+    width: 100%;
+  }
+  .filterBtn.btn-lg {
+    font-size: 16px;
   }
 
   .accordion-button {

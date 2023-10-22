@@ -6,8 +6,6 @@ export function getAllData() {
 }
 
 export function getCategoryMap(filter) {
-  console.log(`Filter in getCategoryMap ${filter}`);
-
   const groupByCategory = Map.groupBy(DUMMY_DATA, (post) => {
     return post[filter];
   });
@@ -16,8 +14,6 @@ export function getCategoryMap(filter) {
 }
 
 export function getCategoryMapF(arr, filter) {
-  console.log(`Filter in getCategoryMapF ${filter}`);
-
   const groupByCategory = Map.groupBy(arr, (post) => {
     const week = weekNumber(post.time);
     post["week"] = "Post Week " + week;
@@ -35,9 +31,7 @@ function weekNumber(time) {
   const date = new Date(time * 1000);
   // Converts timestamp into Date Object
   const dt = new Date(date);
-  // Print the full year
-  console.log(dt.getFullYear());
-
+  
   // January 4 is always in week 1.
   var week1 = new Date(dt.getFullYear(), 0, 4);
   // Adjust to Thursday in week 1 and count number of weeks from date to week1.

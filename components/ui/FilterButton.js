@@ -1,13 +1,12 @@
 export default function FilterButton(props) {
-  const { name, isPressed, setFilter} = props;
+  const { name, isPressed, setFilter } = props;
   function changeFilter(name) {
     setFilter(name);
-    console.log(name);
   }
   return (
     <button
       type="button"
-      className="btn btn-primary btn-lg me-2"
+      className="btn btn-primary btn-lg me-2 filterBtn"
       aria-pressed={isPressed}
       onClick={() => changeFilter(name)}
     >

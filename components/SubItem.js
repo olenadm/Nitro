@@ -38,15 +38,15 @@ export default function SubItem(props) {
       </span>
 
       <div
-        className="meta-data ms-3 text-muted small d-flex align-items-center justify-content-between
-     border-rounded w-50 mt-2"
+        className="meta-data ms-lg-3 text-muted small d-flex align-items-center justify-content-between
+     border-rounded  mt-2"
       >
-        <div>
+        <div className="w-50">
           <LocationIcon />
           {item.location}
         </div>
         <div>
-          <span>Author: {item.author}</span>{" "}
+          <span> {item.author}</span>{" "}
           <button
             type="button"
             className="btn m-0 px-0 pt-0 border-0"
@@ -61,7 +61,10 @@ export default function SubItem(props) {
         </div>
       </div>
 
-      <div className="collapse ms-3 w-50 mt-2" id={`editTemplate${item.id}`}>
+      <div
+        className="collapse ms-lg-3 editTemplate mt-2"
+        id={`editTemplate${item.id}`}
+      >
         <div className="card card-body">
           <form
             className="row gx-3 gy-2 align-items-center "

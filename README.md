@@ -6,6 +6,13 @@ Project is created with:
 * React 18.2
 * Next.js
 
+### Functionality
+* Load the static json list of posts 
+* Display posts on a tree view (expandable accordion), where posts are grouped by posting week. 
+* Clicking on each element, the user can see all details and a form where 'location' and 'author' fields can be edited locally (in memory, no API call needed). 
+* User can change the grouping type of the list. So instead of having a tree grouped by weeks, it could group it by 'author' or 'location'. 
+
+
 First, run the development server:
 
 ```bash

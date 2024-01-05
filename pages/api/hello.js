@@ -6,6 +6,7 @@ export function getAllData() {
 }
 
 export function getCategoryMap(filter) {
+  //The callback function should return a value indicating the group of the associated element. 
   const groupByCategory = Map.groupBy(DUMMY_DATA, (post) => {
     return post[filter];
   });
@@ -14,6 +15,7 @@ export function getCategoryMap(filter) {
 }
 
 export function getCategoryMapF(arr, filter) {
+  //The callback function should return a value indicating the group of the associated element. 
   const groupByCategory = Map.groupBy(arr, (post) => {
     const week = weekNumber(post.time);
     post["week"] = "Post Week " + week;
@@ -23,25 +25,36 @@ export function getCategoryMapF(arr, filter) {
     }
     return post[filter];
   });
-
+//create array from map
   return Array.from(groupByCategory);
 }
 
 function weekNumber(time) {
-  const date = new Date(time * 1000);
-  // Converts timestamp into Date Object
-  const dt = new Date(date);
+ // const date = new Date(time * 1000);
+
+ /*Date.prototype.getWeek = function() {
+  var onejan = new Date(this.getFullYear(),0,1);
+  var today = new Date(this.getFullYear(),this.getMonth(),this.getDate());
+  var dayOfYear = ((today - onejan + 86400000)/86400000);
+  return Math.ceil(dayOfYear/7)
+};
+*/
   
-  // January 4 is always in week 1.
-  var week1 = new Date(dt.getFullYear(), 0, 4);
+  // Converts timestamp into Date Object
+  //Unix timestamp format, representing the number of seconds since January 1, 1970, 00:00:00 UTC. 
+  //To convert a Unix timestamp to a JavaScript timestamp, 
+  //we can multiply it by 1,000 to convert it to milliseconds.
+  const dt = new Date(time * 1000);
+    
+  // January 1 
+  var week1 = new Date(dt.getFullYear(), 0, 1);
+  //count number of weeks from date to week1
+  //dividing result by the total milliseconds in a day gives difference between dates in days
+  //then divide by 7
+  var dayOfYear = ((dt - week1 + 86400000)/86400000);
+  return Math.ceil(dayOfYear/7)
   // Adjust to Thursday in week 1 and count number of weeks from date to week1.
-  return (
-    1 +
-    Math.round(
-      ((dt.getTime() - week1.getTime()) / 86400000 -
-        3 +
-        ((week1.getDay() + 6) % 7)) /
-        7
-    )
-  );
+  //return ( 1 + Math.round( ((dt.getTime() - week1.getTime()) / 86400000 -  3 + ((week1.getDay() + 6) % 7)) /  7
+  //  )
+  //);
 }

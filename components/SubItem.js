@@ -14,7 +14,8 @@ export default function SubItem(props) {
 
     return dateObj;
   }
-
+//-Invoke the function in the child.
+//- Send data back up to the parent as props.
   function handleSubmit(event) {
     event.preventDefault();
 

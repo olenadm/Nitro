@@ -1,13 +1,12 @@
 $light: #d7e3fc;
 $light-bg: #e1e6ee;
-
 $body-color: #222;
-
 $headings-color: #1d1c39;
 $headings-font-weight: 600;
 $h1-font-size: 40px;
-$h2-font-size: 21px;
-$primary: #b8e0d4;
+
+$primary: #086ad8;
+$green: #8bd0c2;
 
 $accordion-bg: $light;
 $accordion-border-radius: 0;
@@ -25,6 +24,41 @@ $accordion-button-active-color: #4461d7;
 $accordion-button-focus-box-shadow: none;
 $btn-border-radius-lg: 2px;
 
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  background-color: rgba(248, 250, 252);
+  color: #6c6b6b;
+}
+
+header {
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.text-primary {
+  color: $primary;
+}
+h2 {
+  animation: fadeIn 5s;
+  line-height: 1.4;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+.fadeIn {
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 h3.title {
   font-size: 15px;
 }
@@ -38,8 +72,12 @@ h3.title {
   overflow: hidden;
   letter-spacing: 0.1em;
   z-index: 1;
+  border: 0;
 }
 
+.btn.active {
+  background-color: $green;
+}
 .btn:after {
   position: absolute;
   content: "";
@@ -47,7 +85,7 @@ h3.title {
   left: 0;
   right: 0;
   height: 100%;
-  background-color: #8bd0c2;
+  background-color: $green;
   transition-delay: 0.1s;
   transition-timing-function: ease-in-out;
   transition-duration: 0.5s;
@@ -81,7 +119,55 @@ h3.title {
   font-weight: 600;
 }
 
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  border-color: rgba(241, 245, 249, 1);
+  background-color: rgba(255, 255, 255, 1);
+ 
+}
+
+.titleHeader {
+  margin: 0; 
+  color: rgba(225, 225, 225, 0.01);
+  background-image: url("../public/img/pawel-czerwinski-SoB70WFVWGU-unsplash.jpg");
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  animation: animate 5s ease-in-out;  
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.static-text {
+  font-size: 14px;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    background-position: left top;
+  }
+  25% {
+    background-position: right bottom;
+  }
+  50% {
+    background-position: left bottom;
+  }
+  75% {
+    background-position: right top;
+  }
+}
+
 @media (min-width: 300px) {
+  .titleHeader{
+    font-size: 30px;;
+  }
   .filterBtn.btn-lg {
     font-size: 12px;
   }
@@ -91,11 +177,20 @@ h3.title {
 }
 
 @media (min-width: 768px) {
+  .titleHeader{
+    font-size: 50px;
+  }
   .filterBtn.btn-lg {
     font-size: 15px;
   }
+  .card {
+    padding: 1.1rem 2rem 2rem;
+  }
 }
 @media (min-width: 992px) {
+  h2 {
+    font-size: 2.25rem;
+  }
   .meta-data,
   .editTemplate {
     width: 100%;
@@ -108,5 +203,3 @@ h3.title {
     font-weight: 500;
   }
 }
-
-@import "/node_modules/bootstrap/scss/bootstrap.scss";
